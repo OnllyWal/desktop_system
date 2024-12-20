@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Últimos Logins</title>
+    <!-- Link para o arquivo CSS estático -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Últimos Logins das Máquinas</h1>
+    <p>Abaixo estão os últimos logins realizados nas máquinas listadas:</p>
+
+    <!-- Tabela para exibir os logins -->
+    <table>
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>Usuário</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in lista_de_logins %}
+                <tr>
+                    <td>{{ item.ip }}</td>
+                    <td>
+                        {% for login in item.logins %}
+                            <div>{{ login.user }}</div>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for login in item.logins %}
+                            <div>{{ login.timestamp }}</div>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Nenhum login encontrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

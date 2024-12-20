@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status das Máquinas</title>
+    <!-- Link para o arquivo CSS estático -->
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+    <h1>Status das Máquinas</h1>
+    <p>Abaixo estão os status de cada máquina verificada.</p>
+
+    <!-- Exibe a lista de IPs e seu status -->
+    <table>
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maquina in resultado %}
+                <tr>
+                    <td>{{ maquina.ip }}</td>
+                    <td class="{% if maquina.ip_status %}status-ativo{% else %}status-inativo{% endif %}">
+                        {% if maquina.ip_status %}
+                            Ativo
+                        {% else %}
+                            Inativo
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

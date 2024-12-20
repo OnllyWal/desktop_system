@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25">
+    <title>Desktop Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/onoffstyle.css') }}">
+
+</head>
+<body>
+    <div class="grid-container1"></div>
+    <script>
+        const gridContainer = document.querySelector('.grid-container1');
+        const states = JSON.parse('{{states | safe}}');
+
+        for (let i = 0; i < 20; i++) {
+            if (i%4 === 2){
+                const spacement = document.createElement('div');
+                spacement.className = 'spacement';
+
+                spacement.innerHTML = `
+                    <div class="column_space"> </div>
+                `
+
+                gridContainer.appendChild(spacement);
+            }
+            // Cria um novo desktop-container
+            const desktopContainer = document.createElement('div');
+            desktopContainer.className = 'desktop_container';
+
+            desktopContainer.innerHTML = `
+                <div class="container_monitor">
+                    <div class="tela"></div>
+                    <div class="visor" id="visor-${i}"></div>
+                    <div class="conector" id="conector"></div>
+                    <div class="base" id="base"></div>
+                    <div class="teclado" id="teclado"></div>
+                    <div class="gabinete" id="gabinete"></div>
+                    <div class="mesa" id="mesa"></div>
+                    <div class="cadeira" id="cadeira-${i}"></div>
+                    <div class="encosto" id="encosto"></div>
+                    <div class="braco_1" id="braco_1"></div>
+                    <div class="braco_2" id="braco_2"></div>
+                </div>
+            </div>
+            `;
+
+            // Insere no grid-container
+            gridContainer.appendChild(desktopContainer);
+        }
+
+        // Adiciona a funcionalidade de ligar/desligar em todos os conjuntos
+        const desktops = document.querySelectorAll('.desktop_container');
+
+        desktops.forEach((desktop, index) => {
+            const screen = desktop.querySelector(`#visor-${index}`);
+            const chair = desktop.querySelector(`#cadeira-${index}`);
+            console.log(`Index: ${index}, State: ${states[index]}, Screen FOund:`, !!screen);
+            const state = states[index];
+
+            chair.classList.toggle('active', state)
+            screen.classList.toggle('active', state); // Adicionar/Remover classe 'active'
+
+        });
+    </script>
+</body>
+</html>

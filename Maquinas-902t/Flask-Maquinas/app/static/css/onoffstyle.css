@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2b2b2b;
+    color: #fff;
+}
+
+.grid-container1 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 75px; /* 300px / 4 */
+    column-gap: 25px; /* 100px / 4 */
+    padding: 5px; /* 20px / 4 */
+    justify-content: center;
+}
+
+.column_space{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 25px; /* 100px / 4 */
+}
+
+.desktop_container {
+    display: inline-block;
+    margin: 2.5px; /* 10px / 4 */
+    text-align: center;
+    position: relative;
+}
+
+.container_monitor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 25px; /* 100px / 4 */
+}
+
+.mesa {
+    position: absolute;
+    top: -12.5px; /* -50px / 4 */
+    left: 30%;
+    transform: translateX(-50%);
+    width: 75px; /* 300px / 4 */
+    height: 42.5px; /* 170px / 4 */
+    background-color: #9b9b9b;
+    z-index: -30;
+    transition: background-color 0.5s;
+}
+
+.base {
+    position: absolute;
+    top: -10px; /* -40px / 4 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px; /* 80px / 4 */
+    height: 15px; /* 60px / 4 */
+    background-color: #444;
+    border-radius: 2.5px; /* 10px / 4 */
+    z-index: -10;
+    transition: background-color 0.5s;
+}
+
+.teclado {
+    position: absolute;
+    top: 7.5px; /* 30px / 4 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px; /* 200px / 4 */
+    height: 15px; /* 60px / 4 */
+    background-color: #444;
+    border-radius: 2.5px; /* 10px / 4 */
+    z-index: -15;
+    transition: background-color 0.5s;
+}
+
+.gabinete {
+    position: absolute;
+    top: -10px; /* -40px / 4 */
+    left: -20%;
+    transform: translateX(-50%);
+    width: 12.5px; /* 50px / 4 */
+    height: 32.5px; /* 130px / 4 */
+    background-color: #444;
+    border-radius: 2.5px; /* 10px / 4 */
+    z-index: -10;
+    transition: background-color 0.5s;
+}
+
+.conector {
+    position: absolute;
+    top: -5px; /* -20px / 4 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5px; /* 10px / 4 */
+    height: 5px; /* 20px / 4 */
+    background-color: #555;
+    transition: background-color 0.5s;
+}
+
+.tela {
+    width: 50px; /* 200px / 4 */
+    height: 2.5px; /* 10px / 4 */
+    background-color: #666;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visor {
+    width: 50px; /* 200px / 4 */
+    height: 0.5px; /* 2px / 4 */
+    background-color: #222;
+    border-radius: 0px;
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.cadeira {
+    position: absolute;
+    top: 32.5px; /* 130px / 4 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px; /* 140px / 4 */
+    height: 30px; /* 120px / 4 */
+    background-color: #444;
+    z-index: -50;
+    border-radius: 5px; /* 20px / 4 */
+    transition: background-color 0.5s;
+}
+
+.encosto {
+    position: absolute;
+    top: 63.75px; /* 255px / 4 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px; /* 140px / 4 */
+    height: 5px; /* 20px / 4 */
+    background-color: #666;
+    z-index: -50;
+    border-radius: 5px; /* 20px / 4 */
+    transition: background-color 0.5s;
+}
+
+.braco_2 {
+    position: absolute;
+    top: 40px; /* 160px / 4 */
+    left: 7%; /* 7% / 4 */
+    transform: translateX(-50%);
+    width: 5px; /* 20px / 4 */
+    height: 22.5px; /* 90px / 4 */
+    background-color: #555;
+    z-index: -50;
+    border-radius: 5px; /* 20px / 4 */
+    transition: background-color 0.5s;
+}
+
+.braco_1 {
+    position: absolute;
+    top: 40px; /* 160px / 4 */
+    left: 93%; /* 93% / 4 */
+    transform: translateX(-50%);
+    width: 5px; /* 20px / 4 */
+    height: 22.5px; /* 90px / 4 */
+    background-color: #555;
+    z-index: -50;
+    border-radius: 5px; /* 20px / 4 */
+    transition: background-color 0.5s;
+}
+
+/* Active states */
+.visor.active {
+    background-color: var(--active-color);
+    box-shadow: 0 0 12.5px 3.75px var(--active-color); /* 50px and 15px / 4 */
+}
+
+.cadeira.active::before {
+    content: '';
+    position: absolute;
+    top: -35px; /* -140px / 4 */
+    left: -5%; /* -20% / 4 */
+    width: 50px; /* 200px / 4 */
+    height: 50px; /* 200px / 4 */
+    background: var(--bluractive-color);
+    filter: blur(7.5px); /* 30px / 4 */
+    z-index: 10;
+}
+
+:root {
+    --active-color: #fff;
+    --bluractive-color: #ffffff83;
+}
